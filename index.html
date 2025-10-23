@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MWA Digital Freedom OS (Licensed Reseller Edition) — v4.3.3 Pages</title>
 <style>
-body{font-family:Poppins,system-ui,-apple-system,sans-serif;background:#000;color:#fff;margin:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#000;color:#fff;margin:0}
 .app-header{text-align:center;background:linear-gradient(90deg,#4b0082,#ffd700);padding:1rem}
 .tagline{opacity:.9}
 .nav-bar{display:flex;flex-wrap:wrap;justify-content:center;background:#111;padding:.25rem}
 .nav-bar button{margin:4px;padding:10px 16px;border:none;border-radius:10px;background:#4b0082;color:#fff;cursor:pointer;font-weight:600}
 .nav-bar button:hover{background:#ffd700;color:#000}
-.tab{display:none;padding:1rem;max-width:1200px;margin:0 auto}
+.tab{display:none;padding:1rem;max-width:1000px;margin:0 auto}
 .tab.active{display:block}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .card{background:#111;border:1px solid #222;border-radius:14px;padding:12px}
@@ -19,10 +20,7 @@ textarea,input,select{width:100%;max-width:100%;margin:8px 0;padding:10px;border
 button{font-weight:700;border-radius:10px}
 .danger{background:#4b0000}
 footer{text-align:center;padding:10px;background:#111;color:#ccc;margin-top:2rem}
-.planner-row{display:flex;gap:8px;flex-wrap:wrap}
-ul#taskList li{display:flex;justify-content:space-between;align-items:center;background:#0f0f0f;margin:6px 0;padding:8px;border-radius:10px;border:1px solid #222}
 .badge{padding:2px 8px;border-radius:999px;background:#222;color:#ddd;font-size:.8rem;margin-left:8px}
-pre{white-space:pre-wrap;word-wrap:break-word}
 </style>
 </head>
 <body>
@@ -90,6 +88,7 @@ pre{white-space:pre-wrap;word-wrap:break-word}
 </footer>
 
 <script>
+// Helpers
 function safeParse(key, fallback){
   try{ const raw=localStorage.getItem(key); if(!raw) return fallback; const val=JSON.parse(raw); return (val===null||typeof val==='undefined')?fallback:val; }
   catch(e){ return fallback; }
@@ -107,6 +106,7 @@ function updateGrowth(){
   const target=monthlyGoal?` and pace for $${monthlyGoal}/mo`:"";
   const el=document.getElementById('progressSummary'); if(el) el.textContent=`Usage score: ${score} • Level: ${level}. ${next}${target}. Prompts saved: ${prompts}, Hooks saved: ${hooks}.`;
 }
+// Tabs
 document.querySelectorAll(".nav-bar button").forEach(btn=>{
   btn.addEventListener("click",()=>{
     document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
@@ -115,6 +115,7 @@ document.querySelectorAll(".nav-bar button").forEach(btn=>{
     updateGrowth();
   });
 });
+// Studio
 document.getElementById('saveGoals').addEventListener('click',()=>{
   const monthly=document.getElementById('goalMonthly').value;
   const posts=document.getElementById('goalPosts').value;
@@ -128,6 +129,7 @@ document.getElementById('recalcGrowth').addEventListener('click',updateGrowth);
   if(g.posts) document.getElementById('goalPosts').value=g.posts;
   updateGrowth();
 })();
+// Prompts
 const basePrompts=[
   "Identity before income: share the belief driving your work today.",
   "Proof: post 1 tiny win or result from your OS.",
@@ -160,6 +162,7 @@ document.getElementById('clearPromptHistory').addEventListener('click',()=>{
   renderPromptHistory(); alert('Prompt history cleared');
 });
 renderPromptHistory();
+// Hooks
 const hookSets={
   bold:["Stop scrolling. Start building.","The broke-to-built blueprint nobody told you about.","Over 40? This makes you dangerous online."],
   friendly:["If we were on a walk, I’d tell you this…","Hey friend—got 30 seconds?","Here’s a shortcut you’ll love."],
@@ -180,6 +183,7 @@ document.getElementById('generateHook').addEventListener('click',()=>{
   renderHookHistory(); updateGrowth();
 });
 renderHookHistory();
+// Tracker
 const DEFAULT_STEPS=[
   "Set goals in Creator Studio",
   "Generate 1 Prompt and save it",
