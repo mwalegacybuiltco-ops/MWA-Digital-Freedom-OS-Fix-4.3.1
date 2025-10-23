@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MWA Digital Freedom OS v4.3.1 — Hotfix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>MWA Digital Freedom OS v4.3.1 — Hotfix</h1>
+    <p class="tagline">Creator Studio • Planner • Mindset • Offers/UTM • Automation • Prompts • Workflow • Hooks • Captions • Hashtags • Checklists • Post Generator</p>
+  </header>
+
+  <nav class="nav-bar">
+    <button data-tab="studio">Creator Studio</button>
+    <button data-tab="planner">Planner</button>
+    <button data-tab="mindset">Mindset</button>
+    <button data-tab="offers">Offers / UTM</button>
+    <button data-tab="automation">Automation</button>
+    <button data-tab="prompts">Prompts</button>
+    <button data-tab="workflow">Workflow</button>
+    <button data-tab="hooks">Hooks</button>
+    <button data-tab="captions">Captions</button>
+    <button data-tab="hashtags">Hashtags</button>
+    <button data-tab="postgen">Post Generator</button>
+    <button data-tab="checklists">Checklists</button>
+    <button data-tab="tracker">Setup Tracker</button>
+  </nav>
+
+  <main id="content-area">
+    <section id="studio" class="tab active">
+      <h2>Creator Studio</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Your Goals</h3>
+          <input id="goalMonthly" placeholder="Monthly income goal (e.g., 5000)" />
+          <input id="goalPosts" placeholder="Daily posts goal (e.g., 2)" />
+          <button id="saveGoals">Save Goals</button>
+        </div>
+        <div class="card">
+          <h3>Progress</h3>
+          <p id="progressSummary">No data yet.</p>
+          <button id="resetApp" class="danger">Reset All Local Data</button>
+        </div>
+        <div class="card">
+          <h3>Growth Engine</h3>
+          <p>Use more modules → smarter prompts and levels.</p>
+          <button id="recalcGrowth">Recalculate Growth</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="planner" class="tab">
+      <h2>Planner</h2>
+      <div class="planner-row">
+        <input id="taskTitle" placeholder="Task title" />
+        <input id="taskDate" type="date" />
+        <select id="taskPriority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button id="addTask">Add Task</button>
+      </div>
+      <ul id="taskList"></ul>
+    </section>
+
+    <section id="mindset" class="tab">
+      <h2>Mindset Journal</h2>
+      <textarea id="mindsetJournal" placeholder="Write your reflection here..."></textarea>
+      <button id="saveMindset">Save Reflection</button>
+      <div id="mindsetHistory"></div>
+    </section>
+
+    <section id="offers" class="tab">
+      <h2>Offers / UTM</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Create Offer</h3>
+          <input id="offerName" placeholder="Offer Name" />
+          <input id="offerPrice" placeholder="Price (e.g., 97)" />
+          <textarea id="offerBenefits" placeholder="List 3–5 benefits, one per line"></textarea>
+          <button id="saveOffer">Save Offer</button>
+          <div id="offersList"></div>
+        </div>
+        <div class="card">
+          <h3>UTM Generator</h3>
+          <input id="utmBase" placeholder="Base URL (https://example.com)" />
+          <input id="utmSource" placeholder="utm_source (e.g., instagram)" />
+          <input id="utmMedium" placeholder="utm_medium (e.g., bio)" />
+          <input id="utmCampaign" placeholder="utm_campaign (e.g., mwa_launch)" />
+          <button id="generateUTM">Generate URL</button>
+          <p id="utmOutput"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="automation" class="tab">
+      <h2>Automation + Copy</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Automation Plan</h3>
+          <textarea id="automationPlan" placeholder="Describe your funnel steps..."></textarea>
+          <button id="saveAutomationPlan">Save Plan</button>
+        </div>
+        <div class="card">
+          <h3>Sales Copy Builder</h3>
+          <select id="copyTone">
+            <option value="bold">Bold & Sassy</option>
+            <option value="friendly">Friendly & Warm</option>
+            <option value="proof">Proof-Based & Direct</option>
+          </select>
+          <textarea id="copyNotes" placeholder="Notes about your offer/audience"></textarea>
+          <button id="generateCopy">Generate Copy</button>
+          <textarea id="salesCopy" placeholder="Your generated copy appears here..."></textarea>
+          <button id="saveCopy">Save Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="prompts" class="tab">
+      <h2>Prompts</h2>
+      <p id="promptText">Click New Prompt for today’s idea.</p>
+      <button id="newPrompt">New Prompt</button>
+      <button id="clearPromptHistory" class="danger">Clear Prompt History</button>
+      <div id="promptHistory"></div>
+    </section>
+
+    <section id="workflow" class="tab">
+      <h2>Workflow Designer</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Create Stage</h3>
+          <input id="wfStageName" placeholder="Stage name" />
+          <button id="wfAddStage">Add Stage</button>
+          <div id="wfStages"></div>
+        </div>
+        <div class="card">
+          <h3>Tasks</h3>
+          <input id="wfTaskText" placeholder="Task" />
+          <button id="wfAddTask">Add Task</button>
+          <ul id="wfTasks"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="hooks" class="tab">
+      <h2>Hooks</h2>
+      <select id="hookTone">
+        <option value="bold">Bold & Sassy</option>
+        <option value="friendly">Friendly & Warm</option>
+        <option value="proof">Proof-Based & Direct</option>
+      </select>
+      <button id="generateHook">Generate Hook</button>
+      <p id="hookOutput"></p>
+      <div id="hookHistory"></div>
+    </section>
+
+    <section id="captions" class="tab">
+      <h2>Captions</h2>
+      <textarea id="captionNotes" placeholder="What’s the post about? Who is it for? What result?"></textarea>
+      <button id="buildCaption">Build Caption</button>
+      <textarea id="captionOutput" placeholder="Your caption appears here..."></textarea>
+      <button id="saveCaption">Save Caption</button>
+      <div id="captionHistory"></div>
+    </section>
+
+    <section id="hashtags" class="tab">
+      <h2>Hashtags</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Inputs</h3>
+          <input id="htNiche" placeholder="Niche (e.g., digitalentrepreneur)" />
+          <input id="htAudience" placeholder="Audience (e.g., genxwomen, grandparents)" />
+          <select id="htGoal">
+            <option value="reach">Reach</option>
+            <option value="engagement">Engagement</option>
+            <option value="authority">Authority</option>
+          </select>
+          <button id="genHashtags">Generate Hashtags</button>
+        </div>
+        <div class="card">
+          <h3>Customize</h3>
+          <input id="htCustom" placeholder="Add custom tag without # (e.g., mwalegacybuiltco)" />
+          <button id="addCustomTag">Add Custom Tag</button>
+          <div id="htCustomList"></div>
+        </div>
+        <div class="card">
+          <h3>Output</h3>
+          <pre id="htOutput"></pre>
+          <button id="saveHashtags">Save Set</button>
+          <div id="htHistory"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="postgen" class="tab">
+      <h2>Post Generator</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Inputs</h3>
+          <label>Offer:</label>
+          <select id="pgOffer"></select>
+          <label>Tone:</label>
+          <select id="pgTone">
+            <option value="bold">Bold & Sassy</option>
+            <option value="friendly">Friendly & Warm</option>
+            <option value="proof">Proof-Based & Direct</option>
+          </select>
+          <button id="pgGenerate">Generate Post</button>
+        </div>
+        <div class="card">
+          <h3>Result</h3>
+          <textarea id="pgOutput" rows="12" placeholder="Generated post appears here..."></textarea>
+          <button id="pgSave">Save Post</button>
+          <div id="pgHistory"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklists" class="tab">
+      <h2>Checklists</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Create Checklist</h3>
+          <input id="clName" placeholder="Checklist name" />
+          <input id="clItem" placeholder="Item" />
+          <button id="clAddItem">Add Item</button>
+          <button id="clSave">Save Checklist</button>
+          <div id="clItems"></div>
+        </div>
+        <div class="card">
+          <h3>Saved Checklists</h3>
+          <div id="clList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracker" class="tab">
+      <h2>Setup Tracker (Hotfix)</h2>
+      <button id="resetTracker" class="danger">Reset Tracker</button>
+      <ul id="setupList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MWA LegacyBuiltCO — Created by April Lungal. Licensed Reseller Rights included.</p>
+  </footer>
+
+  <script src="scripts/growth.js"></script>
+  <script src="scripts/planner.js"></script>
+  <script src="scripts/mindset.js"></script>
+  <script src="scripts/offers.js"></script>
+  <script src="scripts/automation.js"></script>
+  <script src="scripts/prompts.js"></script>
+  <script src="scripts/workflow.js"></script>
+  <script src="scripts/hooks.js"></script>
+  <script src="scripts/captions.js"></script>
+  <script src="scripts/hashtags.js"></script>
+  <script src="scripts/postgen.js"></script>
+  <script src="scripts/checklists.js"></script>
+  <script src="scripts/tracker.js"></script>
+  <script>
+    document.querySelectorAll(".nav-bar button").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+        document.getElementById(btn.dataset.tab).classList.add("active");
+        const key='mwa_usage_tabs'; const d=JSON.parse(localStorage.getItem(key)||'{}');
+        d[btn.dataset.tab]=(d[btn.dataset.tab]||0)+1; localStorage.setItem(key, JSON.stringify(d));
+        if(window.updateGrowth) window.updateGrowth();
+      });
+    });
+  </script>
+</body>
+</html>
